@@ -1,6 +1,10 @@
 
 # ignore object files
-/*.o
+build/*.o
 
-#ignore vscode files
+# ignore vscode files
 .vscode
+
+# ignore binaries
+bin/debug/*
+bin/release/*
