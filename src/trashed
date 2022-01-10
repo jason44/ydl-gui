@@ -1,0 +1,9 @@
+        GtkWidget *save_caro = adw_carousel_new();
+        adw_carousel_set_spacing(ADW_CAROUSEL(save_caro), 15);
+        GtkWidget *button2 = gtk_button_new_with_label("RUNNING MAN");
+        GtkWidget *button3 = gtk_button_new_with_label("UNDER THE GARDEN");
+        GtkWidget *button4 = gtk_button_new_with_label("BENEATH THE PIT");
+        adw_carousel_append(ADW_CAROUSEL(save_caro), button2);
+        adw_carousel_append(ADW_CAROUSEL(save_caro), button3);
+        adw_carousel_append(ADW_CAROUSEL(save_caro), button4);
+        gtk_box_append(GTK_BOX(save_dir_box), save_caro); 
