@@ -1,6 +1,5 @@
 #include <gtk/gtk.h>
-//#include <adwaita.h>
-#include <libhandy-1/handy.h>
+#include <adwaita.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
