@@ -10,7 +10,7 @@
 /*void shutdown(AdwApplication *app, gpointer user_data){
         free(user_data);
 }*/
-void activate(GtkApplication *app, gpointer user_data){
+void activate(AdwApplication *app, gpointer user_data){
         printf("%s\n", ((Options*)user_data)->save_directory);
         // Window
 
@@ -33,18 +33,18 @@ void activate(GtkApplication *app, gpointer user_data){
         gtk_box_append(GTK_BOX(box), top_box);
         gtk_box_append(GTK_BOX(box), mid_box);
         gtk_box_append(GTK_BOX(box), downl_bin);
+        gtk_box_append(GTK_BOX(box), save_row);
         adw_preferences_group_add(ADW_PREFERENCES_GROUP(save_row), save_row_box);
-        gtk_list_box_append(GTK_LIST_BOX(save_row), save_row_box);
         gtk_box_append(GTK_BOX(box), opt_box);
 
         // Boxes edit
         gtk_box_set_spacing(GTK_BOX(box), 15);
         adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(save_row), "Save Folder");
-        gtk_widget_set_margin_start(save_row_box, 20);
+        gtk_widget_set_margin_start(save_row, 20);
         //gtk_box_set_homogeneous(GTK_BOX(save_row_box), true);
 
         // Headerbar
-        *GtkWidget *headerbar = adw_header_bar_new();
+        GtkWidget *headerbar = adw_header_bar_new();
         gtk_window_set_titlebar(GTK_WINDOW(window), headerbar);
         GtkWidget *menubutton = adw_button_content_new();
         adw_button_content_set_icon_name(ADW_BUTTON_CONTENT(menubutton), "Menu");
@@ -80,7 +80,7 @@ void activate(GtkApplication *app, gpointer user_data){
         gtk_widget_set_visible(pro_bar, false);
         g_signal_connect_swapped(button, "clicked", G_CALLBACK(download_bar), pro_bar);
         g_signal_connect(button, "clicked", G_CALLBACK(ytdlp_active), user_data);
-       
+        
         // File Chooser
         GtkWidget *file_chooser = gtk_file_chooser_dialog_new("Choose Save Directory", 
                                                         GTK_WINDOW(window),
@@ -98,12 +98,10 @@ void activate(GtkApplication *app, gpointer user_data){
         GtkWidget *save_frame = gtk_frame_new(((Options*)user_data)->save_directory);
         // gtk_widget_set_size_request(save_frame, 400, 16);
         gtk_widget_set_hexpand(save_frame, true);
-        GtkLabel *t_label = gtk_label_new("Location where the file will be saved");
+        GtkWidget *t_label = gtk_label_new("Location where the file will be saved");
         gtk_frame_set_label_widget(GTK_FRAME(save_frame), t_label);
         ((Options*)user_data)->save_frame_p = save_frame;
         gtk_box_append(GTK_BOX(save_row_box), save_frame); 
-        gtk_box_append(GTK_BOX(save_row_box), save_frame); 
-
         // File Chooser button
         GtkWidget *button4 = gtk_button_new_with_label("Choose Folder");
         gtk_widget_set_margin_start(button4, 2);
@@ -169,10 +167,10 @@ void ytdlp_active(GtkWidget *widget, gpointer data){
         if (gtk_widget_is_visible(widget) == false){
                 gtk_widget_set_visible(widget, true);
                 //while ()
-                pthread_t t1;
-                int tc1 = pthread_create(&t1, NULL, gtk_progress_bar_pulse, GTK_PROGRESS_BAR(widget));
+                //pthread_t t1;
+                //int tc1 = pthread_create(&t1, NULL, gtk_progress_bar_pulse, GTK_PROGRESS_BAR(widget));
                 //gtk_progress_bar_pulse(GTK_PROGRESS_BAR(widget));
-                pthread_join(t1, NULL);
+                //pthread_join(t1, NULL);
         }
         else {
                 gtk_widget_set_visible(widget, false);

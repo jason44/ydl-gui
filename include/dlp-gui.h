@@ -29,7 +29,7 @@ typedef struct _Options{
 //void shutdown(AdwApplication *app, gpointer user_data);
 
 // Application 
-void activate(GtkApplication *app, gpointer user_data);
+void activate(AdwApplication *app, gpointer user_data);
 
 // Save directory
 void choose_folder(GtkFileChooserDialog *dialog, int response, gpointer user_data);

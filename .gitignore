@@ -1,3 +1,6 @@
 
 # ignore object files
-*.o
+/*.o
+
+#ignore vscode files
+.vscode
